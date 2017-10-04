@@ -1,6 +1,8 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.sparse import csr_matrix
+from PIL import Image
 
 alphabet = {
     'e': 10.0,
@@ -108,5 +110,16 @@ def generate_image(sentence, pixels=500, dir="output"):
     if not os.path.isdir(dir):
         os.makedirs(dir)
     filename = dir + "/" + sentence + ".png"
-    plt.savefig(filename, dpi=size, bbox_inches='tight')
+    plt.savefig(filename, dpi=size)
     plt.close()
+    return filename
+
+def vectorizer(sentence, pixels=500, dir="output", dense=False):
+    filename = generate_image(sentence)
+    img = Image.open(filename).convert('L')
+    arr = np.array(img)
+    arr = 255 - arr
+    if dense:
+        return arr
+    csr = csr_matrix(arr)
+    return csr
