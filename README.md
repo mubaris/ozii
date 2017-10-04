@@ -1,4 +1,4 @@
-# ozii
+# Ozii
 
 Generating **PulseGraphs** from text.
 
