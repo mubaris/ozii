@@ -26,7 +26,8 @@ texts = [
     "Cisco eats apple",
     "Weapon",
     "There is no linear time.",
-    "Where is Cisco?"
+    "Where is Cisco?",
+    "Th1s 1s 4 test of non includ3d c#4r4ct3rs!"
 ]
 
 for i, text in enumerate(texts):
