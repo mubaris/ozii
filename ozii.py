@@ -1,10 +1,11 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+from collections import defaultdict
 #from scipy.sparse import csr_matrix
 #from PIL import Image
 
-alphabet = {
+alphabet = defaultdict(lambda: 0, {
     'e': 10.0,
     't': 9.62,
     'a': 9.23,
@@ -31,36 +32,13 @@ alphabet = {
     'q': 1.15,
     'j': 0.77,
     'z': 0.34,
-    'E': 10.0+(1e-7),
-    'T': 9.62+(1e-7),
-    'A': 9.23+(1e-7),
-    'O': 8.85+(1e-7),
-    'I': 8.46+(1e-7),
-    'N': 8.08+(1e-7),
-    'S': 7.69+(1e-7),
-    'R': 7.31+(1e-7),
-    'H': 6.92+(1e-7),
-    'D': 6.54+(1e-7),
-    'L': 6.15+(1e-7),
-    'U': 5.77+(1e-7),
-    'C': 5.34+(1e-7),
-    'M': 5.00+(1e-7),
-    'F': 4.62+(1e-7),
-    'Y': 4.23+(1e-7),
-    'W': 3.85+(1e-7),
-    'G': 3.46+(1e-7),
-    'P': 3.08+(1e-7),
-    'B': 2.69+(1e-7),
-    'V': 2.31+(1e-7),
-    'K': 1.92+(1e-7),
-    'X': 1.54+(1e-7),
-    'Q': 1.15+(1e-7),
-    'J': 0.77+(1e-7),
-    'Z': 0.34+(1e-7),
     '.': 4.9e-7,
     '?': 5.1e-7,
     ' ': 0
-}
+})
+
+for letter in [key for key in alphabet.keys() if key.isalpha()]:
+    alphabet[letter.upper()] = alphabet[letter]+(1e-7)
 
 def cos(x):
     return np.cos(180 * x / np.pi)
@@ -72,10 +50,7 @@ def inverse(x):
     return 1/x
 
 def transformer(x):
-    y = cos(x)
-    y = sin(y)
-    y = inverse(y)
-    return y
+    return inverse(sin(cos(x)))
 
 x = np.linspace(0, 1, 1001)
 x = x[1:]
