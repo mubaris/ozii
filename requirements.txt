@@ -1,0 +1,9 @@
+numpy==1.13.3
+Pillow==4.3.0
+
+# To install matplotlib,
+# Linux:
+# - sudo apt-get build-dep python-matplotlib
+# Mac: (need to install libpng freetype first)
+# - brew install libpng freetype pkg-config
+# - pip install matplotlib
