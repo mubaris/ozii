@@ -6,7 +6,7 @@ Checkout [this blog post](https://mubaris.com/2017-10-04/project-ozii) for more 
 
 ## Usage
 
-When the program is executed directly from the terminal it accepts the following three command line arguments:
+When the program is executed directly from the terminal it accepts the following arguments:
 
 1. ```-t, --text```: string, mandatory. Input sentence from which to generate the graph.
 2. ```-s, --size```: int, optional with default value 500. Size in pixel value.
