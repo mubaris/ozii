@@ -4,6 +4,22 @@ Generating **PulseGraphs** from text.
 
 Checkout [this blog post](https://mubaris.com/2017-10-04/project-ozii) for more info.
 
+## Usage
+
+When the program is executed directly from the terminal it accepts the following three command line arguments:
+
+1. ```-t, --text```: string, mandatory. Input sentence from which to generate the graph.
+2. ```-s, --size```: int, optional with default value 500. Size in pixel value.
+3. ```-d, --dir```: string, optional with default value "output". Directory where the output image will be saved.
+
+By calling: ```python ozii.py -h``` the help will show up in the terminal.
+
+Usage examples:
+- ```python ozii.py -t Hello world```
+- ```python ozii.py -t Hello world -s 650```
+- ```python ozii.py -t Hello world -d Testing```
+- ```python ozii.py -t Hello world -s 650 -d Testing```
+
 ## Examples
 
 #### ozii
