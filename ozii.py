@@ -38,7 +38,6 @@ def build_alphabet():
         '?': 5.1e-7,
         ' ': 0
     })
-
     for letter in [key for key in alphabet.keys() if key.isalpha()]:
         alphabet[letter.upper()] = alphabet[letter]+(1e-7)
     return alphabet
@@ -76,8 +75,7 @@ def sentence_transformer(x, alphabet, sentence):
 
 def generate_image(sentence, pixels=500, dir="output"):
     alphabet = build_alphabet()
-    x = np.linspace(0, 1, 1001)
-    x = x[1:]
+    x = np.linspace(0, 1, 1001)[1:]
     y = sentence_transformer(x, alphabet, sentence)
     size = pixels / 10
     fig = plt.figure(figsize=(10, 10))
@@ -103,22 +101,19 @@ def generate_image(sentence, pixels=500, dir="output"):
     return csr'''
 
 def main():
+    # Check if arguments have been given a value
+    # text is not checked because it is mandatory
     if args.size is None:
         parser.error('Invalid size')
     elif args.dir is None:
         parser.error('Invalid output directory')
     generate_image(args.text, args.size, args.dir)
-    # command line parsing
-
-
 
 if __name__ == '__main__':
-    # Command line argument parsing
+    # Command line argument parsing only if the program is being executed directly
     parser = argparse.ArgumentParser(description='Generate PulseGraphs from Text data')
-
     parser.add_argument('-t','--text', help='Input sentence', required=True)
     parser.add_argument('-s','--size', help='Output image size in pixels', type=int, nargs='?', default=500)
     parser.add_argument('-d','--dir', help='Output directory', nargs='?', default='output')
-
     args = parser.parse_args()
     main()
